@@ -35,14 +35,20 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     async function loadProducts(): Promise<void> {
-      // TODO
+      /** Aqui retornamos os produtos de nossa api */
+      const response = await api.get('/products');
+
+      /** Damos um 'setProducts' com o retorno dos dados de nossa api  */
+      setProducts(response.data);
     }
 
     loadProducts();
   }, []);
 
   function handleAddToCart(item: Product): void {
-    // TODO
+    /** Aqui passamos a função addToCart, passando dentro dela o 'item', fazendo com que nos leve
+     * até a função do nosso context (hooks), que vai ser o arquivo 'cart.tsx' */
+    addToCart(item);
   }
 
   return (
